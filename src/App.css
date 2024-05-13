@@ -1,42 +1,89 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet');
+
+/* 
+cores
+0A1128
+001F54
+034078
+1282A2
+FEFCFB
+*/
+
+:root {
+  --fonte-geral: 'Roboto', sans-serif;
+
+  --cor-fundo: #0a1128;
+
+  --cor-fonte: #fefcfb;
+  --cor-fonte-input: #0a1128;
+
+  --cor-card: #034078;
+
+  --cor-botao: #034078;
+
+  --tamanho-fonte-titulo: 2rem;
+  --tamanho-fonte-subtitulo: 1.5rem;
+  --tamanho-fonte-texto: 1rem;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+html {
+  background-color: var(--cor-fundo);
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.mainStyles {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4em 0;
+  gap: 1em;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.hide {
+  display: none;
 }
 
-.card {
-  padding: 2em;
+.text {
+  font-family: var(--fonte-geral);
+  font-size: var(--tamanho-fonte-texto);
+  color: var(--cor-fonte);
 }
 
-.read-the-docs {
-  color: #888;
+.title {
+  font-family: var(--fonte-geral);
+  font-size: var(--tamanho-fonte-titulo);
+  color: var(--cor-fonte);
+}
+
+.text__input {
+  font-family: var(--fonte-geral);
+  font-size: var(--tamanho-fonte-texto);
+  color: var(--cor-fonte-input);
+}
+
+input,
+select {
+  margin: 0.25em;
+  padding: 0.25em;
+  border-radius: 5px;
+}
+
+.button {
+  background-color: var(--cor-botao);
+  border-radius: 5px;
+  padding: 0.5em;
+  cursor: pointer;
+  transition: 100ms;
+}
+
+.button:active {
+  transform: scale(0.75);
+}
+
+.formStyles {
+  align-items: center;
+  justify-content: center;
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  gap: 2em;
 }
