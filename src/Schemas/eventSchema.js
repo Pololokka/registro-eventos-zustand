@@ -1,6 +1,6 @@
 import * as yup from 'yup';
 
-export const schema = yup.object().shape({
+export const eventSchema = yup.object().shape({
   nome: yup
     .string()
     .min(3, 'Preencha corretamente este campo!')
@@ -59,7 +59,7 @@ export const schema = yup.object().shape({
   }),
 });
 
-export const schemaDictionary = {
+export const eventSchemaDictionary = {
   nome: 'Nome Completo/Razão Social',
   tipoFesta: 'Tipo de Evento/Festa',
   tipOutro: 'Especifique',

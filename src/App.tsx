@@ -1,15 +1,32 @@
 import './App.css';
 
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import eventSchema from './Schemas/eventSchema';
+
 import InputText from './Components/InputText/Index';
 import InputSelect from './Components/InputSelect/Index';
 import InputNumber from './Components/InputNumber/Index';
 
 function App() {
+  const {
+    register,
+    unregister,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm({ resolver: yupResolver(eventSchema) });
+
   return (
     <main className="mainStyles">
       <h1 className="title">Registro de Eventos</h1>
       <form className="formStyles">
-        <InputText id="nome" labelName="Nome Completo/Razão Social" />
+        <InputText
+          id="nome"
+          labelName="Nome Completo/Razão Social"
+          register={register}
+          errors={errors}
+        />
 
         <InputSelect
           id="tipoFesta"
@@ -22,7 +39,12 @@ function App() {
           ]}
         />
 
-        <InputText id="tipOutro" labelName="Especifique" />
+        <InputText
+          id="tipOutro"
+          labelName="Especifique"
+          register={register}
+          errors={errors}
+        />
 
         <div>
           <p className="text">Quantidade de Pessoas</p>
@@ -32,11 +54,27 @@ function App() {
           <InputNumber id="quantidadeMax" labelName="Máximo" min={0} />
         </div>
 
-        <InputText id="email" labelName="Email" />
+        <InputText
+          id="email"
+          labelName="Email"
+          register={register}
+          errors={errors}
+        />
 
-        <InputNumber id="cpfCnpj" labelName="CPF/CNPJ" min={0} />
+        <InputNumber
+          id="cpfCnpj"
+          labelName="CPF/CNPJ"
+          min={0}
+          register={register}
+          errors={errors}
+        />
 
-        <InputText id="tema" labelName="Tema da Festa" />
+        <InputText
+          id="tema"
+          labelName="Tema da Festa"
+          register={register}
+          errors={errors}
+        />
 
         <InputNumber id="idade" labelName="Idade do Aniversariante" min={0} />
 
@@ -58,7 +96,12 @@ function App() {
           ]}
         />
 
-        <InputText id="conheceuOutro" labelName="Especifique" />
+        <InputText
+          id="conheceuOutro"
+          labelName="Especifique"
+          register={register}
+          errors={errors}
+        />
       </form>
     </main>
   );

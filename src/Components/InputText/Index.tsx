@@ -1,6 +1,10 @@
+import { UseFormRegister, FieldValues } from 'react-hook-form';
+
 export interface Props {
   id: string;
   labelName: string;
+  register: UseFormRegister<FieldValues>;
+  errors: any;
 }
 
 const InputText = (props: Props) => {
@@ -11,10 +15,12 @@ const InputText = (props: Props) => {
       </label>
       <input
         type="text"
-        name={props.id}
         id={props.id}
+        {...props.register(`${props.id}`)}
         className="text__input"
       />
+
+      <p className="text">{props.errors[props.id]?.message}</p>
     </div>
   );
 };
