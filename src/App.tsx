@@ -22,6 +22,8 @@ function App() {
           ]}
         />
 
+        <InputText id="tipOutro" labelName="Especifique" />
+
         <div>
           <p className="text">Quantidade de Pessoas</p>
 
@@ -32,7 +34,7 @@ function App() {
 
         <InputText id="email" labelName="Email" />
 
-        <InputNumber id="cpf-cnpj" labelName="CPF/CNPJ" min={0} />
+        <InputNumber id="cpfCnpj" labelName="CPF/CNPJ" min={0} />
 
         <InputText id="tema" labelName="Tema da Festa" />
 
@@ -55,6 +57,8 @@ function App() {
             'Outro',
           ]}
         />
+
+        <InputText id="conheceuOutro" labelName="Especifique" />
       </form>
     </main>
   );
