@@ -1,15 +1,14 @@
-import { useForm } from 'react-hook-form';
+import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 export interface Props {
   id: string;
   labelName: string;
   options: string[];
+  register: UseFormRegister<FieldValues>;
   errors: any;
 }
 
 const InputSelect = (props: Props) => {
-  const { register } = useForm();
-
   return (
     <div>
       <label htmlFor={props.id} className="text">
@@ -17,7 +16,7 @@ const InputSelect = (props: Props) => {
       </label>
       <select
         id={props.id}
-        {...register(`${props.id}`)}
+        {...props.register(`${props.id}`)}
         className="text__input"
       >
         {props.options.map((element, index) => {

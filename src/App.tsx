@@ -11,6 +11,7 @@ import InputNumber from './Components/InputNumber/Index';
 
 function App() {
   const {
+    register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(eventSchema) });
@@ -22,29 +23,34 @@ function App() {
   return (
     <main className="mainStyles">
       <h1 className="title">Registro de Eventos</h1>
-      <form
-        className="formStyles"
-        onSubmit={handleSubmit((data) => handleInfo(data))}
-      >
+      <form className="formStyles" onSubmit={handleSubmit(handleInfo)}>
         <InputText
           id="nome"
           labelName="Nome Completo/Razão Social"
           errors={errors}
+          register={register}
         />
 
         <InputSelect
           id="tipoFesta"
           labelName="Tipo de Evento/Festa"
           options={[
+            '',
             'Aniversário',
             'Reunião de Empresa/Workshop',
             'Coffee and Meet',
             'Outro',
           ]}
           errors={errors}
+          register={register}
         />
 
-        <InputText id="tipOutro" labelName="Especifique" errors={errors} />
+        <InputText
+          id="tipOutro"
+          labelName="Especifique"
+          errors={errors}
+          register={register}
+        />
 
         <div>
           <p className="text">Quantidade de Pessoas</p>
@@ -54,6 +60,7 @@ function App() {
             labelName="Mínimo"
             min={0}
             errors={errors}
+            register={register}
           />
 
           <InputNumber
@@ -61,38 +68,53 @@ function App() {
             labelName="Máximo"
             min={0}
             errors={errors}
+            register={register}
           />
         </div>
 
-        <InputText id="email" labelName="Email" errors={errors} />
+        <InputText
+          id="email"
+          labelName="Email"
+          errors={errors}
+          register={register}
+        />
 
         <InputNumber
           id="cpfCnpj"
           labelName="CPF/CNPJ"
           min={0}
           errors={errors}
+          register={register}
         />
 
-        <InputText id="tema" labelName="Tema da Festa" errors={errors} />
+        <InputText
+          id="tema"
+          labelName="Tema da Festa"
+          errors={errors}
+          register={register}
+        />
 
         <InputNumber
           id="idade"
           labelName="Idade do Aniversariante"
           min={0}
           errors={errors}
+          register={register}
         />
 
         <InputSelect
           id="genero"
           labelName="Gênero do Aniversariante"
-          options={['Masculino', 'Feminino', 'Outro']}
+          options={['', 'Masculino', 'Feminino', 'Outro']}
           errors={errors}
+          register={register}
         />
 
         <InputSelect
           id="conheceu"
           labelName="Como nos Conheceu?"
           options={[
+            '',
             'Recomendação',
             'Facebook',
             'Instagram',
@@ -100,9 +122,15 @@ function App() {
             'Outro',
           ]}
           errors={errors}
+          register={register}
         />
 
-        <InputText id="conheceuOutro" labelName="Especifique" errors={errors} />
+        <InputText
+          id="conheceuOutro"
+          labelName="Especifique"
+          errors={errors}
+          register={register}
+        />
 
         <input type="submit" value="Enviar" className="text button" />
       </form>
