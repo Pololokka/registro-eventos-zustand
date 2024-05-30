@@ -1,13 +1,17 @@
-import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { useForm } from 'react-hook-form';
 
 export interface Props {
   id: string;
   labelName: string;
-  register: UseFormRegister<FieldValues>;
   errors: any;
 }
 
 const InputText = (props: Props) => {
+  const {
+    register,
+    // unregister,
+  } = useForm();
+
   return (
     <div>
       <label htmlFor={props.id} className="text">
@@ -16,7 +20,7 @@ const InputText = (props: Props) => {
       <input
         type="text"
         id={props.id}
-        {...props.register(`${props.id}`)}
+        {...register(`${props.id}`)}
         className="text__input"
       />
 
