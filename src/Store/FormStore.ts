@@ -15,19 +15,19 @@ type formTypes = {
   conheceuOutro: string;
 };
 
-type formDefaultValue = {
-  nome: '';
-  tipoFesta: '';
-  tipOutro: '';
-  quantidadeMin: '';
-  quantidadeMax: '';
-  email: '';
-  cpfCnpj: '';
-  tema: '';
-  idade: '';
-  genero: '';
-  conheceu: '';
-  conheceuOutro: '';
+export const formDefaultValues = {
+  nome: '',
+  tipoFesta: '',
+  tipOutro: '',
+  quantidadeMin: '',
+  quantidadeMax: '',
+  email: '',
+  cpfCnpj: '',
+  tema: '',
+  idade: '',
+  genero: '',
+  conheceu: '',
+  conheceuOutro: '',
 };
 
 type FormStore = {
