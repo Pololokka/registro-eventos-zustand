@@ -23,25 +23,6 @@ const InputSelect = (props: Props) => {
   //   }
   // };
 
-  const handleTest = (event: any) => {
-    if (event.id == 'tipoFesta') {
-      if (
-        event.value == 'tipoFestaAniversário' ||
-        event.value == 'tipoFestaOutro'
-      ) {
-        console.log('entrou no if');
-        //@ts-ignore
-        setShow({ ...show, [event.value]: !show[event.value] });
-      }
-    } else {
-      if (event.value == 'conheceuOutro') {
-        //@ts-ignore
-        setShow({ ...show, [event.value]: !show[event.value] });
-      }
-    }
-    console.log(show);
-  };
-
   return (
     <div>
       <label htmlFor={props.id} className="text">
@@ -51,7 +32,6 @@ const InputSelect = (props: Props) => {
         id={props.id}
         {...props.register(`${props.id}`)}
         className="text__input"
-        onClick={(event) => handleTest(event.target)}
       >
         {props.options.map((element, index) => {
           return (

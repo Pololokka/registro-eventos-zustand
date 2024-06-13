@@ -1,53 +1,36 @@
 import { create } from 'zustand';
 
-type formTypes = {
-  nome: string;
-  tipoFesta: string;
-  tipOutro: string;
-  quantidadeMin: number;
-  quantidadeMax: number;
-  email: string;
-  cpfCnpj: string;
-  tema: string;
-  idade: number;
-  genero: string;
-  conheceu: string;
-  conheceuOutro: string;
+type formShowTypes = {
+  tipoFestaAniversário: boolean;
+  tipoFestaOutro: boolean;
+  conheceuOutro: boolean;
 };
 
-export const formDefaultValues = {
-  nome: '',
-  tipoFesta: '',
-  tipOutro: '',
-  quantidadeMin: '',
-  quantidadeMax: '',
-  email: '',
-  cpfCnpj: '',
-  tema: '',
-  idade: '',
-  genero: '',
-  conheceu: '',
-  conheceuOutro: '',
+export const formShowDefaultValues = {
+  tipoFestaAniversário: false,
+  tipoFestaOutro: false,
+  conheceuOutro: false,
 };
 
-type FormStore = {
-  answers: formTypes;
-  changeAnswer: (field: string, value: string | number) => void;
-  clearAnswers: () => void;
+type FormShowStore = {
+  formShowValues: formShowTypes;
+  showField: (field: string, value: string | number) => void;
 };
 
 //@ts-ignore
-export const useFormStore = create<FormStore>((set) => {
+export const useFormShowStore = create<FormShowStore>((set) => {
   return {
-    answers: {},
+    formShowValues: {},
 
-    changeAnswer: (field, value) => {
-      console.log(field);
-      console.log(value);
-      set((state) => ({ answers: { ...state.answers, [field]: value } }));
+    showField: (fieldValue) => {
+      console.log(fieldValue);
+      set((state) => ({
+        formShowValues: {
+          ...state.formShowValues,
+          //@ts-ignore
+          [fieldValue]: !state.formShowValues[fieldValue],
+        },
+      }));
     },
-
-    //@ts-ignore
-    clearAnswers: () => set(() => ({ answers: formDefaultValues })),
   };
 });
