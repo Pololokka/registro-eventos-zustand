@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { UseFormRegister, FieldValues } from 'react-hook-form';
 
 export interface Props {
@@ -9,20 +8,7 @@ export interface Props {
   errors: any;
 }
 
-const showInitialValues = {
-  tipoFestaOutro: false,
-  tipoFestaAniversário: false,
-  conheceuOutro: false,
-};
-
 const InputSelect = (props: Props) => {
-  const [show, setShow] = useState(showInitialValues);
-  // const handleShow = (inputValue: string, fieldToShow: string) => {
-  //   if (inputValue == 'Outro' || inputValue == 'Aniversário') {
-  //     console.log('foi hein');
-  //   }
-  // };
-
   return (
     <div>
       <label htmlFor={props.id} className="text">
