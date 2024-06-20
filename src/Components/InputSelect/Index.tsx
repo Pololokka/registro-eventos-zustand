@@ -1,4 +1,5 @@
 import { UseFormRegister, FieldValues } from 'react-hook-form';
+import { useFormShowStore } from '../../Store/FormStore';
 
 export interface Props {
   id: string;
@@ -9,6 +10,9 @@ export interface Props {
 }
 
 const InputSelect = (props: Props) => {
+  const changeFormShow = useFormShowStore((state) => state.showField);
+  const answers = useFormShowStore((state) => state.formShowValues);
+
   return (
     <div>
       <label htmlFor={props.id} className="text">
@@ -18,6 +22,10 @@ const InputSelect = (props: Props) => {
         id={props.id}
         {...props.register(`${props.id}`)}
         className="text__input"
+        onChange={(event) => {
+          changeFormShow(event.target.value);
+          console.log(answers);
+        }}
       >
         {props.options.map((element, index) => {
           return (

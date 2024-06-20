@@ -14,7 +14,7 @@ export const formShowDefaultValues = {
 
 type FormShowStore = {
   formShowValues: formShowTypes;
-  showField: (field: string, value: string | number) => void;
+  showField: (value: string) => void;
 };
 
 //@ts-ignore
@@ -23,14 +23,21 @@ export const useFormShowStore = create<FormShowStore>((set) => {
     formShowValues: {},
 
     showField: (fieldValue) => {
-      console.log(fieldValue);
-      set((state) => ({
-        formShowValues: {
-          ...state.formShowValues,
-          //@ts-ignore
-          [fieldValue]: !state.formShowValues[fieldValue],
-        },
-      }));
+      if (
+        fieldValue == 'tipoFestaAniversário' ||
+        fieldValue == 'tipoFestaOutro' ||
+        fieldValue == 'conheceuOutro'
+      ) {
+        set((state) => ({
+          formShowValues: {
+            ...state.formShowValues,
+            //@ts-ignore
+            [fieldValue]: !state.formShowValues[fieldValue],
+          },
+        }));
+      } else {
+        return null;
+      }
     },
   };
 });
