@@ -9,12 +9,16 @@ import InputText from './Components/InputText/Index';
 import InputSelect from './Components/InputSelect/Index';
 import InputNumber from './Components/InputNumber/Index';
 
+import { useFormShowStore } from './Store/FormStore';
+
 function App() {
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ resolver: yupResolver(eventSchema) });
+
+  const answers = useFormShowStore((state) => state.formShowValues);
 
   const handleInfo = (data: any) => {
     console.log(data);
@@ -30,7 +34,6 @@ function App() {
           errors={errors}
           register={register}
         />
-
         <InputSelect
           id="tipoFesta"
           labelName="Tipo de Evento/Festa"
@@ -44,14 +47,6 @@ function App() {
           errors={errors}
           register={register}
         />
-
-        <InputText
-          id="tipOutro"
-          labelName="Especifique"
-          errors={errors}
-          register={register}
-        />
-
         <div>
           <p className="text">Quantidade de Pessoas</p>
 
@@ -71,32 +66,15 @@ function App() {
             register={register}
           />
         </div>
-
         <InputText
           id="email"
           labelName="Email"
           errors={errors}
           register={register}
         />
-
         <InputNumber
           id="cpfCnpj"
           labelName="CPF/CNPJ"
-          min={0}
-          errors={errors}
-          register={register}
-        />
-
-        <InputText
-          id="tema"
-          labelName="Tema da Festa"
-          errors={errors}
-          register={register}
-        />
-
-        <InputNumber
-          id="idade"
-          labelName="Idade do Aniversariante"
           min={0}
           errors={errors}
           register={register}
@@ -109,7 +87,6 @@ function App() {
           errors={errors}
           register={register}
         />
-
         <InputSelect
           id="conheceu"
           labelName="Como nos Conheceu?"
@@ -124,13 +101,44 @@ function App() {
           errors={errors}
           register={register}
         />
+        <h2 className="title">Campos Adicionais</h2>
 
-        <InputText
-          id="conheceuOutro"
-          labelName="Especifique"
-          errors={errors}
-          register={register}
-        />
+        {answers.tipoFestaAniversário ? (
+          <>
+            <InputText
+              id="tema"
+              labelName="Tema da Festa de Aniversário"
+              errors={errors}
+              register={register}
+            />
+
+            <InputNumber
+              id="idade"
+              labelName="Idade do Aniversariante"
+              min={0}
+              errors={errors}
+              register={register}
+            />
+          </>
+        ) : null}
+
+        {answers.tipoFestaOutro ? (
+          <InputText
+            id="tipOutro"
+            labelName="Especifique o tipo de festa!"
+            errors={errors}
+            register={register}
+          />
+        ) : null}
+
+        {answers.conheceuOutro ? (
+          <InputText
+            id="conheceuOutro"
+            labelName="Especifique como nos conheceu!"
+            errors={errors}
+            register={register}
+          />
+        ) : null}
 
         <input type="submit" value="Enviar" className="text button" />
       </form>

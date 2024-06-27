@@ -83,7 +83,7 @@ select {
 .formStyles {
   align-items: center;
   justify-content: center;
-  display: grid;
-  grid-template-columns: 2fr 2fr;
+  display: flex;
+  flex-direction: column;
   gap: 2em;
 }
