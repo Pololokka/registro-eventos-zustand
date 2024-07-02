@@ -18,7 +18,8 @@ function App() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(eventSchema) });
 
-  const answers = useFormShowStore((state) => state.formShowValues);
+  const extraConheceu = useFormShowStore((state) => state.conheceu);
+  const extraTipoFesta = useFormShowStore((state) => state.tipoFesta);
 
   const handleInfo = (data: any) => {
     console.log(data);
@@ -103,7 +104,7 @@ function App() {
         />
         <h2 className="title">Campos Adicionais</h2>
 
-        {answers.tipoFestaAniversário ? (
+        {extraTipoFesta == 'Aniversário' ? (
           <>
             <InputText
               id="tema"
@@ -122,7 +123,7 @@ function App() {
           </>
         ) : null}
 
-        {answers.tipoFestaOutro ? (
+        {extraTipoFesta == 'Outro' ? (
           <InputText
             id="tipOutro"
             labelName="Especifique o tipo de festa!"
@@ -131,7 +132,7 @@ function App() {
           />
         ) : null}
 
-        {answers.conheceuOutro ? (
+        {extraConheceu == 'Outro' ? (
           <InputText
             id="conheceuOutro"
             labelName="Especifique como nos conheceu!"

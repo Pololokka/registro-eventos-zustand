@@ -11,7 +11,6 @@ export interface Props {
 
 const InputSelect = (props: Props) => {
   const changeFormShow = useFormShowStore((state) => state.showField);
-  const answers = useFormShowStore((state) => state.formShowValues);
 
   return (
     <div>
@@ -23,13 +22,12 @@ const InputSelect = (props: Props) => {
         {...props.register(`${props.id}`)}
         className="text__input"
         onChange={(event) => {
-          changeFormShow(event.target.value);
-          console.log(answers);
+          changeFormShow(event.target.id, event.target.value);
         }}
       >
         {props.options.map((element, index) => {
           return (
-            <option key={index} value={`${props.id + element}`}>
+            <option key={index} value={element}>
               {element}
             </option>
           );
