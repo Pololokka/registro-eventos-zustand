@@ -9,7 +9,7 @@ import InputText from './Components/InputText/Index';
 import InputSelect from './Components/InputSelect/Index';
 import InputNumber from './Components/InputNumber/Index';
 
-import { useFormShowStore } from './Store/FormStore';
+import { useFormShowStore } from './Flux Core/Store/FormStore';
 
 function App() {
   const {
@@ -18,8 +18,8 @@ function App() {
     formState: { errors },
   } = useForm({ resolver: yupResolver(eventSchema) });
 
-  const extraConheceu = useFormShowStore((state) => state.conheceu);
-  const extraTipoFesta = useFormShowStore((state) => state.tipoFesta);
+  const extraConheceu = useFormShowStore((state) => state.state.conheceu);
+  const extraTipoFesta = useFormShowStore((state) => state.state.tipoFesta);
 
   const handleInfo = (data: any) => {
     console.log(data);

@@ -1,5 +1,6 @@
 import { UseFormRegister, FieldValues } from 'react-hook-form';
-import { useFormShowStore } from '../../Store/FormStore';
+import { useFormShowStore } from '../../Flux Core/Store/FormStore';
+import { FormActions } from '../../Flux Core/Actions/FormActions';
 
 export interface Props {
   id: string;
@@ -10,7 +11,11 @@ export interface Props {
 }
 
 const InputSelect = (props: Props) => {
-  const changeFormShow = useFormShowStore((state) => state.showField);
+  const dispatch = useFormShowStore((state) => state.dispatch);
+
+  const handleSelecValue = (name: string, fieldValue: string) => {
+    dispatch(FormActions.showField(name, fieldValue));
+  };
 
   return (
     <div>
@@ -22,7 +27,7 @@ const InputSelect = (props: Props) => {
         {...props.register(`${props.id}`)}
         className="text__input"
         onChange={(event) => {
-          changeFormShow(event.target.id, event.target.value);
+          handleSelecValue(event.target.id, event.target.value);
         }}
       >
         {props.options.map((element, index) => {
